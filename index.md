@@ -9,21 +9,65 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
-Syntax highlighted code block
+<!DOCTYPE html>
+<html lang="en">
+    <head>
 
-# Header 1
-## Header 2
-### Header 3
+        <title>Coins.js</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="css/game.css">
 
-- Bulleted
-- List
+        <!-- three.js -->
+        <script type="text/javascript" src="js/three.js"></script>
+        <script type="text/javascript" src="js/libs/stats.min.js"></script>
+        <script type="text/javascript" src="js/libs/dat.gui.min.js"></script>
+        
+        <!-- Physics -->
+        <script type="text/javascript" src="js/physics/physi.js"></script>
+        <script>
+            Physijs.scripts.worker = '/assets/js/physics/physijs_worker.js';
+            Physijs.scripts.ammo = '/assets/js/physics/ammo.js';
+        </script>
+        
+        <!-- Shaders -->
+        <script src="js/shaders/CopyShader.js"></script>
+        <script src="js/shaders/SMAAShader.js"></script>
 
-1. Numbered
-2. List
+        <!-- Postprocessing -->
+        <script src="js/postprocessing/EffectComposer.js"></script>
+        <script src="js/postprocessing/SMAAPass.js"></script>
+        <script src="js/postprocessing/RenderPass.js"></script>
+        <script src="js/postprocessing/MaskPass.js"></script>
+        <script src="js/postprocessing/ShaderPass.js"></script>
+    </head>
+    <body>
+        
+        <!-- Overlay -->
+        <div id="overlay">
 
-**Bold** and _Italic_ and `Code` text
+            <!-- Loading! -->
+            <div id="loader" style="display: none;">
+                <img src="textures/loader.gif">
+                <h2>Loading <span style="color: #F5C715;">Coins</span>.js</h2>
+            </div>
 
-[Link](url) and ![Image](src)
+            <div id="coin-slot" onclick="createCoin(randomRange(-40,40),randomRange(80,100),randomRange(-20,-100));">
+                <img src="textures/coin_slot.png">
+            </div>
+
+        </div>
+
+        <!-- Container for game -->
+        <div id="viewport"></div>
+
+        <!-- Coins.js -->
+        <script type="text/javascript" src="js/game.js"></script>
+        
+    </body>
+</html>
 ```
 
 For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
